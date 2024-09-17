@@ -1,96 +1,148 @@
-La première et la deuxième partie du projet, "Prédiction du meilleur défenseur de l’année de la NBA", a été réalisée par : 
-MESSILI Islem
-BA Bintou
-BINA Ayoub
+# Projet de Prédiction du Meilleur Défenseur de l'Année NBA (DPOY)
 
+Ce projet se concentre sur la prédiction du prix NBA Defensive Player of the Year (DPOY) en combinant **web scraping**, **nettoyage de données**, **sélection d'attributs**, et **modèles de machine learning**.
 
-Instruction pour lancer le notebook:
+## Aperçu du projet
 
-Environnement Python : Assurez-vous d'avoir un environnement Python fonctionnel installé sur votre système.
+Le projet est structuré en plusieurs notebooks, chacun focalisé sur une étape clé du processus de prédiction :
 
-Dépendances : Installez les dépendances nécessaires qui ce trouve au debut de chaque notebook.
+1. **All_DPOY_Winners_By_Year**
+   - Extraction des votes pour le DPOY par année.
 
-Exécution du code : Une fois le notebook ouvert, exécutez chaque cellule dans l'ordre.
+2. **DPOY_Winners**
+   - Extraction de tous les joueurs ayant remporté le prix DPOY de 1993 à 2023.
 
+3. **All_Teams**
+   - Extraction des statistiques des équipes NBA (team_opponent et team_misc).
 
-Contenu de chaque notebook :
+4. **All_Players**
+   - Extraction des statistiques des joueurs (per_game, per_100_poss, et advanced) de 1993 à 2023, avec fusion en un seul ensemble de données.
 
-All_DPOY_Winners_By_Year:
+5. **Adding_Additional_att_to_players**
+   - Ajout d'attributs supplémentaires pour les joueurs à partir de sources externes.
 
-Ce notebook extrait tous les tableaux des votes pour le DPOY par année.
+6. **Méthodes de Sélection d'Attributs**
+   - **Char_selection_Mutual_info** : Sélection basée sur l'information mutuelle.
+   - **Char_selection_Pearson_R** : Sélection avec le coefficient de corrélation de Pearson.
+   - **Char_selection_SelectFromModel** : Sélection basée sur Random Forest ou XGBoost.
 
-DPOY_Winners:
+7. **Implémentation de Kendall's Tau**
+   - Implémente le coefficient de corrélation Kendall Tau pour tester la stabilité des sélections d'attributs sur différentes périodes de 5 ans.
 
-Ce notebook extrait tous les joueurs ayant remporté le prix DPOY de 1993 à 2023.
+8. **Comparaison Joueurs DPOY vs Non-DPOY**
+   - Analyse des différences statistiques entre un joueur ayant remporté le DPOY et un joueur ne l'ayant pas remporté.
 
-All_teams:
+9. **Prédiction et Évaluation des Modèles**
+   - Entraînement et évaluation de plusieurs modèles en utilisant différentes méthodes de sélection d'attributs.
 
-Ce notebook extrait les statistiques (team_opponent et team_misc) de toutes les équipes de la NBA.
+## Technologies Utilisées
 
-All_Players:
+- **Python** : Langage principal pour le traitement et l'analyse des données.
+- **Selenium & Web Scraping** : Utilisé pour extraire du contenu dynamique avec **Selenium**.
+- **Pandas & NumPy** : Manipulation et nettoyage des données.
+- **Scikit-learn** : Implémentation des modèles de machine learning.
+- **XGBoost, Random Forest** : Algorithmes de prédiction.
+- **Jupyter Notebooks** : Environnement de développement et d'exécution.
+- **Matplotlib** : Visualisation des données.
 
-Ce notebook extrait les statistiques (per_game, per_100_poss, et advanced) de tous les joueurs ayant joué entre 1993 et 2023. Il fusionne également toutes les statistiques de chaque joueur pour créer un grand ensemble de données de 2789 joueurs et 16283 lignes.
+## Instructions pour Lancer le Projet
 
-Adding_Additional_att_to_players:
+1. Clonez le projet :
+   ```bash
+   git clone https://github.com/votre-repo-url.git
+   ```
 
-Ce notebook ajoute des attributs supplémentaires aux joueurs, incluant des ressources additionnelles.
+2. Ouvrez les notebooks dans **Jupyter** et exécutez les cellules dans l'ordre.
 
-Char_selection_Mutual_info:
+3. Suivez les instructions spécifiques à chaque notebook pour extraire les données, entraîner les modèles et évaluer les résultats.
 
-Ce notebook effectue la sélection d'attributs en utilisant l'information mutuelle pour identifier les caractéristiques les plus pertinentes pour le modèle de prédiction.
+## Prérequis
 
-Char_selection_Person_R:
+- **Python 3.x** : Assurez-vous que Python est installé.
+- **Dépendances** : Installez les bibliothèques nécessaires.
+- **Chrome Driver** : Téléchargez et installez un driver Chrome compatible avec votre navigateur.
 
-Ce notebook utilise le coefficient de corrélation de Pearson pour sélectionner les attributs en fonction de leur corrélation avec la variable cible.
+## Licence
 
-Char_selection_SelectFromModel:
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
 
-Ce notebook utilise la méthode SelectFromModel pour sélectionner les attributs les plus importants basés sur un modèle d'apprentissage automatique, il est utilise avec Random Forest et XGBOOST.
+## Contact
 
-Kendall's_Tau_Implementation:
+Pour toute question ou suggestion, veuillez ouvrir une issue sur le repo ou me contacter à l'adresse suivante :
 
-Ce notebook implémente le coefficient de corrélation de Kendall Tau pour tester la stabilité des sélections d'attributs entre différentes tranches de 5 ans et différentes méthodes de sélection d'attributs.
+Email: **messiliislem@gmail.com**
 
-DPOY_winner vs Non_DPOY_winner:
+---
 
-Ce notebook compare un joueur ayant remporté le prix DPOY avec un autre qui ne la pas remporté, en analysant les différences de leurs statistiques et performances.
+# NBA Defensive Player of the Year Prediction (DPOY) Project
 
-Predct+Eval_model_RDF+MI_ALL :
+This project focuses on predicting the NBA Defensive Player of the Year (DPOY) award by combining **web scraping**, **data cleaning**, **feature selection**, and **machine learning models**.
 
-Ce notebook entraîne et évalue un modèle Random Forest avec la sélection d'attributs par Information Mutuelle (MI) sur l'ensemble complet des données.
+## Project Overview
 
-Predct+Eval_model_RDF+MI_PERIOD :
+The project is divided into several notebooks, each focusing on a key step of the prediction process:
 
-Ce notebook entraîne et évalue un modèle Random Forest avec la sélection d'attributs par Information Mutuelle (MI) sur des périodes de 5 a 9 ans.
+1. **All_DPOY_Winners_By_Year**
+   - Extracts all voting tables for the DPOY by year.
 
-Predct+Eval_model_RDF+RDF_ALL :
+2. **DPOY_Winners**
+   - Extracts all players who have won the DPOY award from 1993 to 2023.
 
-Ce notebook entraîne et évalue un modèle Random Forest avec la sélection d'attributs par Random Forest (SelectFromModel) sur l'ensemble complet des données.
+3. **All_Teams**
+   - Extracts team statistics (team_opponent and team_misc) for all NBA teams.
 
-Predct+Eval_model_RDF+RDF_PERIOD :
+4. **All_Players**
+   - Extracts player statistics (per_game, per_100_poss, and advanced) for all players from 1993 to 2023 and merges them into one comprehensive dataset.
 
-Ce notebook entraîne et évalue un modèle Random Forest avec la sélection d'attributs par Random Forest (SelectFromModel) sur des périodes de 5 a 9 ans.
+5. **Adding_Additional_att_to_players**
+   - Adds additional attributes to players from external resources.
 
-Predct+Eval_model_XGB+PersonsR_ALL :
+6. **Feature Selection Methods**
+   - **Char_selection_Mutual_info**: Attribute selection based on mutual information.
+   - **Char_selection_Pearson_R**: Attribute selection using Pearson correlation coefficient.
+   - **Char_selection_SelectFromModel**: Attribute selection using Random Forest or XGBoost.
 
+7. **Kendall's Tau Implementation**
+   - Implements the Kendall Tau correlation coefficient to test the stability of feature selection across different 5-year intervals.
 
-Ce notebook entraîne et évalue un modèle XGBoost avec la sélection d'attributs par le coefficient de corrélation de Pearson sur l'ensemble complet des données.
+8. **DPOY vs Non-DPOY Player Comparison**
+   - Compares a player who won the DPOY with one who did not, analyzing statistical differences.
 
-Predct+Eval_model_XGB+PersonsR_PERIOD :
+9. **Prediction and Model Evaluation**
+   - Trains and evaluates several models using different feature selection methods.
 
-Ce notebook entraîne et évalue un modèle XGBoost avec la sélection d'attributs par le coefficient de corrélation de Pearson sur des périodes de 5 a 9 ans.
+## Technologies Used
 
-Predct+Eval_model_XGB+XGB_ALL :
+- **Python**: Core language for data processing and analysis.
+- **Selenium & Web Scraping**: Web scraping with **Selenium** for extracting dynamic content.
+- **Pandas & NumPy**: Data manipulation and cleaning.
+- **Scikit-learn**: Implementation of machine learning models for predictive modeling.
+- **XGBoost, Random Forest**: Algorithms for prediction.
+- **Jupyter Notebooks**: Development and execution environment.
+- **Matplotlib**: Data visualization.
 
-Ce notebook entraîne et évalue un modèle XGBoost avec la sélection d'attributs par XGBoost (SelectFromModel) sur l'ensemble complet des données.
+## Setup Instructions
 
-Predct+Eval_model_XGB+XGB_PERIOD :
+1. Clone the project:
+   ```bash
+   git clone https://github.com/your-repo-url.git
+   ```
 
-Ce notebook entraîne et évalue un modèle XGBoost avec la sélection d'attributs par XGBoost (SelectFromModel) sur des périodes de 5 a 9 ans.
+2. Open the notebooks in **Jupyter** and run the cells in order.
 
-Script_Eval :
+3. Follow the specific instructions in each notebook to extract the data, train the models, and evaluate the results.
 
-Ce notebook contient le script d'évaluation qui utilise les résultats des prédictions pour compter le nombre de classements corrects et évaluer la performance globale de chaque modèle.
+## Dependencies
 
-Note: 
-Assurez-vous de télécharger et d'installer un Chrome Driver compatible avec votre navigateur Chrome.
+- **Python 3.x**: Make sure Python is installed.
+- **Dependencies**: Install the required libraries.
+- **Chrome Driver**: Download and install a Chrome Driver compatible with your browser.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+For any questions or suggestions, feel free to open an issue on the repository or contact me at:
+
+Email: **messiliislem@gmail.com**
